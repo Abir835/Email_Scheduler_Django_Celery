@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}  {% endblock %}
+{% block content %}
+    <div class="container" style="width: 33%; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 3%">
+        <h2 class="text-center">Email Form</h2>
+        <div style="padding-top: 2%; text-align: right;">
+            <p><a href="{% url 'email-list' %}">Go to Email List </a><i style="padding-left: 1%;"
+                                                                       class="fa fa-arrow-circle-right"
+                                                                       aria-hidden="true"></i></p>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleFormControlInput1">From</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" name="form-email" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">To</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" name="to-email" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Subject</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="subject">
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Email Body</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="email-body"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Date</label>
+                <input type="datetime-local" class="form-control" id="exampleFormControlInput1" name="email-date">
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} {% endblock %}
+{% block content %}
+    <div class="container" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 3%">
+        <table class="table">
+            <h2 class="text-center">List of Email</h2>
+            <div>
+                <p><a href="{% url 'email-body' %}">Go to Email Form</a><i style="padding-left: 1%;"
+                                                                           class="fa fa-arrow-circle-left"
+                                                                           aria-hidden="true"></i></p>
+            </div>
+            <thead style="background-color: #dee2e6;">
+            <tr>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="text-center">Cancel</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for obj_form in obj %}
+                <tr>
+                    <td>{{ obj_form.form_email }}</td>
+                    <td>{{ obj_form.to_email }}</td>
+                    <td>{{ obj_form.subject }}</td>
+                    <td>{{ obj_form.date }}</td>
+                    <td>Pending</td>
+                    <td class="text-center"><a href="{% url 'delete_email' obj_form.id %}"><i class="fa fa-times"
+                                                                                              aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
